@@ -1,29 +1,61 @@
 /* Genel sifirlama */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: system-ui, sans-serif; line-height: 1.6; padding:var(--space-lg); }
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+body { 
+  font-family: var(--font-sans); 
+  font-size: var(--text-base); /* Font boyutu değişkene bağlandı */
+  color: var(--color-text);
+  line-height: 1.6; 
+  padding: var(--space-lg); 
+}
 
 /* Skip link: normalde gizli, Tab ile gorunur */
 .skip-link {
   position: absolute;
   top: -100px;
   left: 0;
-  background: var(--color-primary) ;
-  color: white;
-  padding: var(--space-lg);
+  background: var(--color-primary);
+  color: var(--color-bg); /* white yerine değişken kullanıldı */
+  font-size: var(--text-base); /* Font boyutu eklendi */
+  padding: var(--space-sm) var(--space-md); /* Daha dengeli bir padding */
   z-index: 100;
+  border-radius: var(--radius-sm);
 }
 .skip-link:focus { top: 0; }
 
 /* Focus gostergesi - ASLA kaldirma */
-:focus { outline: 2px solid #2563EB; outline-offset: 2px; }
+:focus { 
+  outline: 2px solid var(--color-secondary); /* HEX kod yerine değişken */
+  outline-offset: 2px; 
+}
 
 /* Form stilleri */
-.form-group { margin-bottom: 1rem; }
-label { display: block; margin-bottom: 0.25rem; }
+.form-group { 
+  margin-bottom: var(--space-md); /* 1rem yerine değişken */
+}
+
+label { 
+  display: block; 
+  margin-bottom: var(--space-xs); /* 0.25rem yerine değişken */
+  font-size: var(--text-base); /* Font boyutu eklendi */
+}
+
 input, textarea, select {
   width: 100%;
-  padding: var(--space-lg);
+  padding: var(--space-sm); /* space-lg form için çok büyüktü, küçültüldü */
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  font-family: var(--font-sans); /* Form elemanları kendi fontunu almasın diye eklendi */
+  font-size: var(--text-base); /* Font boyutu eklendi */
 }
-.error-msg { color: var(--color-error); font-size:var(--text-base); }
+
+.error-msg { 
+  color: var(--color-error); 
+  font-size: var(--text-sm); /* Hata mesajları genelde daha küçük olur (base yerine sm) */
+  display: block;
+  margin-top: var(--space-xs);
+}
