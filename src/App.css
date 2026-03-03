@@ -1,71 +1,58 @@
-/* Genel sifirlama */
+/* ========================================
+   GENEL AYARLAR & MOBİL VARSAYILAN (0-639px)
+======================================== */
 @import './styles/tokens.css';
-* { 
+
+*, *::before, *::after { 
   margin: 0; 
   padding: 0; 
   box-sizing: border-box; 
 }
 
-body { 
-  font-family: var(--font-sans); 
-  font-size: var(--text-base); /* Font boyutu değişkene bağlandı */
-  color: var(--color-text);
-  line-height: 1.6; 
-  padding: var(--space-lg); 
+html { 
+  scroll-behavior: smooth; 
 }
 
-/* Skip link: normalde gizli, Tab ile gorunur */
+body { 
+  font-family: var(--font-sans); 
+  font-size: var(--text-base); 
+  line-height: 1.6; 
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+img { 
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+}
+
+/* --- Erişilebilirlik (A11y) --- */
 .skip-link {
   position: absolute;
   top: -100px;
   left: 0;
-  background: var(--color-primary);
-  color: var(--color-bg); /* white yerine değişken kullanıldı */
-  font-size: var(--text-base); /* Font boyutu eklendi */
-  padding: var(--space-sm) var(--space-md); /* Daha dengeli bir padding */
+  background: var(--color-primary-dark, #1D4ED8); /* Yedek renk eklendi */
+  color: white;
+  padding: 8px 16px;
   z-index: 100;
-  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: bold;
+  transition: top 0.3s ease;
 }
+
 .skip-link:focus { top: 0; }
+:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
 
-/* Focus gostergesi - ASLA kaldirma */
-:focus { 
-  outline: 2px solid var(--color-secondary); /* HEX kod yerine değişken */
-  outline-offset: 2px; 
-}
+/* --- Düzen ve Bölümler --- */
+section { padding: var(--space-xl) var(--space-md); }
+section h2 { font-size: var(--text-2xl); color: var(--color-primary); text-align: center; margin-bottom: var(--space-lg); }
 
-/* Form stilleri */
-.form-group { 
-  margin-bottom: var(--space-md); /* 1rem yerine değişken */
-}
-
-label { 
-  display: block; 
-  margin-bottom: var(--space-xs); /* 0.25rem yerine değişken */
-  font-size: var(--text-base); /* Font boyutu eklendi */
-}
-
-input, textarea, select {
-  width: 100%;
-  padding: var(--space-sm); /* space-lg form için çok büyüktü, küçültüldü */
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-family: var(--font-sans); /* Form elemanları kendi fontunu almasın diye eklendi */
-  font-size: var(--text-base); /* Font boyutu eklendi */
-}
-
-.error-msg { 
-  color: var(--color-error); 
-  font-size: var(--text-sm); /* Hata mesajları genelde daha küçük olur (base yerine sm) */
-  display: block;
-  margin-top: var(--space-xs);
-}
-/* ===== HEADER ===== */
+/* --- Header & Nav (Mobilde Dikey) --- */
 header {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: var(--space-sm);
   padding: var(--space-md) var(--space-lg);
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
@@ -74,122 +61,87 @@ header {
   z-index: 10;
 }
 
-/* Logo / Site adı */
-.site-title {
-  font-size: var(--text-xl);
-  font-weight: 700;
-  color: var(--color-primary);
+.site-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); text-align: center; }
+
+nav ul { display: flex; flex-direction: column; align-items: center; list-style: none; gap: var(--space-sm); width: 100%; }
+nav a { display: block; width: 100%; text-align: center; padding: var(--space-xs) var(--space-md); color: var(--color-text); text-decoration: none; border-radius: var(--radius-md); transition: background var(--transition-fast), color var(--transition-fast); }
+nav a:hover, nav a:focus { background-color: var(--color-primary); color: var(--color-bg); }
+
+/* --- Hakkımda Bölümü --- */
+.about-content { display: flex; flex-direction: column; align-items: center; gap: var(--space-lg); text-align: center; margin-bottom: var(--space-lg); }
+.about-content figure { max-width: 200px; display: flex; flex-direction: column; align-items: center; }
+.about-content figcaption { margin-top: var(--space-sm); font-weight: bold; color: var(--color-primary); }
+
+/* Profil fotoğrafının tam yuvarlak ve düzgün görünmesi için ayarlar */
+.about-content img { 
+  width: 150px; 
+  height: 150px; 
+  border-radius: var(--radius-full); 
+  object-fit: cover; 
+  border: 4px solid var(--color-surface);
+  box-shadow: var(--shadow-md);
 }
 
-/* ===== NAV LİSTESİ ===== */
-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  gap: var(--space-sm);
-  padding: 0;
-  margin: 0;
-}
+/* --- Yetenek Etiketleri --- */
+.skill-tags { display: flex; flex-wrap: wrap; gap: var(--space-sm); list-style: none; padding: 0; justify-content: center; }
+.skill-tags li { color: var(--color-bg); background-color: var(--color-primary); padding: var(--space-xs) var(--space-md); border-radius: var(--radius-full); font-size: var(--text-sm); }
 
-nav a {
-  display: inline-block;
-  padding: var(--space-xs) var(--space-md);
-  color: var(--color-text);
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  transition: background var(--transition-fast), color var(--transition-fast);
-}
+/* --- Proje Kartları (Grid) --- */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl); }
+.project-card { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; transition: transform var(--transition-normal), box-shadow var(--transition-normal); }
+.project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--color-border); }
+.project-card h3, .project-card p, .project-card .skill-tags { padding: 0 var(--space-lg); }
+.project-card h3 { margin-top: var(--space-md); font-size: var(--text-lg); }
+.project-card p { color: var(--color-muted); flex-grow: 1; margin-bottom: var(--space-md); }
+.project-card .skill-tags { padding-bottom: var(--space-lg); margin-top: auto; justify-content: flex-start; }
 
-nav a:hover,
-nav a:focus {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-}
+/* --- İletişim Formu --- */
+fieldset { background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 2rem; max-width: 500px; margin: 0 auto; box-shadow: var(--shadow-sm); }
+legend { font-size: var(--text-xl); font-weight: 600; color: var(--color-primary-dark, #1D4ED8); padding: 0 0.5rem; }
+.form-group { margin-bottom: var(--space-md); }
+label { display: block; margin-bottom: var(--space-xs); font-weight: 600; }
+input, textarea, select { width: 100%; padding: var(--space-sm) var(--space-md); border: 1px solid var(--color-border); border-radius: var(--radius-md); font-family: inherit; font-size: var(--text-base); transition: border-color var(--transition-fast); }
+input:focus, textarea:focus, select:focus { border-color: var(--color-primary); outline: 2px solid var(--color-secondary); outline-offset: 2px; }
+button[type="submit"] { width: 100%; padding: var(--space-sm) var(--space-lg); background: var(--color-primary); color: var(--color-bg); border: none; border-radius: var(--radius-md); font-size: var(--text-base); font-weight: 600; cursor: pointer; transition: background var(--transition-fast); margin-top: var(--space-md); }
+button[type="submit"]:hover, button[type="submit"]:focus { background: var(--color-primary-dark, #1D4ED8); }
+.error-msg { color: var(--color-error); font-size: var(--text-sm); display: block; margin-top: 0.35rem; min-height: 1.2rem; }
 
-/* ===== MOBİLDE DİKEY YIĞIN (Responsive) ===== */
-@media (max-width: 639px) {
-  header {
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
+/* --- Footer --- */
+footer { text-align: center; padding: var(--space-xl) var(--space-md); background: var(--color-surface); border-top: 1px solid var(--color-border); color: var(--color-muted); font-size: var(--text-sm); }
+
+
+/* ========================================
+   TABLET (640px ve üzeri)
+======================================== */
+@media (min-width: 640px) {
+  section { padding: var(--space-2xl) var(--space-xl); }
   
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
+  /* Header yatay olur */
+  header { flex-direction: row; justify-content: space-between; align-items: center; }
+  nav ul { flex-direction: row; width: auto; }
+  nav a { display: inline-block; width: auto; }
   
-  nav a {
-    display: block;
-    text-align: center;
-    width: 100%;
-  }
-}
-/* ===== YETENEK ETİKETLERİ (SKILL TAGS) ===== */
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  list-style: none;
-  padding: 0;
+  /* Hakkımda bölümü yatay olur */
+  .about-content { flex-direction: row; text-align: left; align-items: flex-start; }
+  .about-content figure { flex-shrink: 0; }
+  .skill-tags { justify-content: flex-start; }
+  
+  /* Form butonu tam ekran genişliğinden çıkar */
+  button[type="submit"] { width: auto; }
 }
 
-.skill-tags li {
-  color: var(--color-bg);
-  background-color: var(--color-primary);
-  padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-full); /* Etiketlere tam yuvarlak (hap) görünümü verir */
-  font-size: var(--text-sm);
-}
-/* ===== PROJE GRİD ===== */
-.project-grid {
-  display: grid;
-  /* Sihirli satır: otomatik responsive grid! Media query'ye gerek kalmaz. */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-xl);
-}
-
-/* ===== PROJE KARTI ===== */
-.project-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.project-card:hover {
-  transform: translateY(-4px); /* Üzerine gelince kartı hafifçe yukarı kaldırır */
-  box-shadow: var(--shadow-lg);
-}
-
-/* Kart içindeki görsel */
-.project-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* Kart içeriği (Başlık, paragraf ve etiketlerin kenar boşlukları) */
-.project-card h3,
-.project-card p,
-.project-card .skill-tags {
-  padding: 0 var(--space-lg);
-}
-
-.project-card h3 {
-  margin-top: var(--space-md);
-  font-size: var(--text-lg);
-}
-
-.project-card p {
-  color: var(--color-muted);
-  flex-grow: 1; /* İçerik farklı uzunlukta olsa bile butonların/etiketlerin alt kenarı hizalı kalır */
-}
-
-.project-card .skill-tags {
-  padding-bottom: var(--space-lg);
-  margin-top: auto; /* Etiketleri her zaman kartın en altına iter */
+/* ========================================
+   MASAÜSTÜ (1024px ve üzeri)
+======================================== */
+@media (min-width: 1024px) {
+  /* İçeriği sınırla ve ortala */
+  main { max-width: 1200px; margin: 0 auto; }
+  section { padding: var(--space-3xl) var(--space-xl); }
+  
+  /* Proje sayısı şu an 2 olduğu için 3'lü zorunlu grid yerine
+     esnek auto-fit kullanmak tasarımı daha dengeli yapar.
+     Min-width değeri 400px'e çıkarılarak kartların çok daralması engellendi.
+  */
+  .project-grid { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
 }

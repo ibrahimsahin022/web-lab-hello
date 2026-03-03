@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0) // Şimdilik kullanılmıyor ama ileride lazım olabilir
-
   return (
     <>
       <a href="#main-content" className="skip-link">
@@ -11,7 +8,7 @@ function App() {
       </a>
       
       <header>
-        <h1 className="site-title">İbrahim Halil Şahin</h1> {/* site-title class'ını ekledik */}
+        <h1 className="site-title">İbrahim Halil Şahin</h1>
         <nav aria-label="Ana navigasyon">
           <ul>
             <li><a href="#hakkimda">Hakkımda</a></li>
@@ -26,23 +23,26 @@ function App() {
         {/* ===== HAKKIMDA BÖLÜMÜ ===== */}
         <section id="hakkimda">
           <h2>Hakkımda</h2>
-          
-          <figure>
-            <img src="https://picsum.photos/150" alt="İbrahim Halil Şahin profil fotoğrafı" />
-            <figcaption>İbrahim Halil Şahin</figcaption>
-          </figure>
-          
-          <p>Web geliştirme alanında kendini geliştiren bir öğrenciyim. Modern web teknolojilerinin yanı sıra yazılım algoritmaları ve veri yapıları ile de yakından ilgileniyorum.</p>
-          
-          <h3>Kullandığım Teknolojiler</h3>
-          <ul className="skill-tags">
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>React</li>
-            <li>TypeScript</li>
-            <li>JavaScript</li>
-            <li>Git</li>
-          </ul>
+          <div className="about-content">
+            <figure>
+              <img src="https://picsum.photos/150" alt="İbrahim Halil Şahin profil fotoğrafı" />
+              <figcaption>İbrahim Halil Şahin</figcaption>
+            </figure>
+            
+            <div>
+              <p>Web geliştirme alanında kendini geliştiren bir öğrenciyim. Modern web teknolojilerinin yanı sıra yazılım algoritmaları ve veri yapıları ile de yakından ilgileniyorum.</p>
+              <br/>
+              <h3>Kullandığım Teknolojiler</h3>
+              <ul className="skill-tags">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>Git</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         {/* ===== PROJELERİM BÖLÜMÜ ===== */}
@@ -83,6 +83,7 @@ function App() {
         {/* ===== İLETİŞİM BÖLÜMÜ ===== */}
         <section id="iletisim">
           <h2>İletişim</h2>
+          <p>Telefon: 5309376439</p>
           
           <form action="#" method="POST" noValidate>
             <fieldset>
@@ -90,7 +91,7 @@ function App() {
 
               <div className="form-group">
                 <label htmlFor="name">Ad Soyad:</label>
-                <input type="text" id="name" name="name" required minLength="2" aria-describedby="name-error" />
+                <input type="text" id="name" name="name" required minLength={2} aria-describedby="name-error" />
                 <small id="name-error" className="error-msg" role="alert"></small>
               </div>
 
@@ -113,7 +114,7 @@ function App() {
 
               <div className="form-group">
                 <label htmlFor="message">Mesajiniz:</label>
-                <textarea id="message" name="message" rows="5" required minLength="10" aria-describedby="message-error"></textarea>
+                <textarea id="message" name="message" rows={5} required minLength={10} aria-describedby="message-error"></textarea>
                 <small id="message-error" className="error-msg" role="alert"></small>
               </div>
 
