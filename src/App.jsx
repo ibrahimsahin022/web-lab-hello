@@ -26,8 +26,8 @@ function App() {
           <h2>Hakkimda</h2>
           <figure>
             {/* Profil resmi için anlamlı alt metin */}
-            <img src="https://via.placeholder.com/150" alt="Ad Soyad vesikalik fotografi" />
-            <figcaption>Ad Soyad</figcaption>
+            <img src="https://picsum.photos/150" alt="İbrahim Halil Şahin profil fotoğrafı" />
+            <figcaption>İbrahim Halil Şahin</figcaption>
           </figure>
           <p>Merhaba, ben web geliştirme öğrenen bir öğrenciyim.</p>
           <ul>
@@ -94,7 +94,7 @@ function App() {
       </main>
 
       <footer>
-        <p>&copy; 2025 Ad Soyad. Tum haklari saklidir.</p>
+        <p>&copy; 2025 İbrahim Halil Şahin. Tüm hakları saklıdır.</p>
       </footer>
     </div>
   );

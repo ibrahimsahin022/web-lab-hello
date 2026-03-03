@@ -1,68 +1,98 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* --- 1. GENEL SIFIRLAMA VE YERLEŞİM --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333333; /* Yüksek kontrast için koyu gri metin */
+  background-color: #ffffff; /* Temiz beyaz arka plan */
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto; /* Sayfayı ortalar ve okumayı kolaylaştırır */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* --- 2. ERİŞİLEBİLİRLİK (A11Y) KURALLARI --- */
+
+/* Görünmez Skip Link (Sadece Tab tuşu ile gezinirken görünür) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #2563EB;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus (Odak) Göstergesi - Klavye kullanıcıları için zorunludur, ASLA silinmez */
+:focus {
+  outline: 3px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* --- 3. TİPOGRAFİ VE BOŞLUKLAR --- */
+h1, h2, h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #111111;
+}
+
+p, ul, figure {
+  margin-bottom: 1rem;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+/* --- 4. FORM STİLLERİ --- */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #767676; /* Yeterli kontrast için koyu gri kenarlık */
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #2563EB;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  background-color: #1D4ED8;
+}
+
+.error-msg {
+  color: #B91C1C; /* Kırmızı uyarı rengi (Kontrastı yüksek) */
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 0.3rem;
 }
