@@ -1,4 +1,5 @@
 /* Genel sifirlama */
+@import './styles/tokens.css';
 * { 
   margin: 0; 
   padding: 0; 
@@ -58,4 +59,85 @@ input, textarea, select {
   font-size: var(--text-sm); /* Hata mesajları genelde daha küçük olur (base yerine sm) */
   display: block;
   margin-top: var(--space-xs);
+}
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Logo / Site adı */
+.site-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ===== NAV LİSTESİ ===== */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: var(--space-sm);
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+/* ===== MOBİLDE DİKEY YIĞIN (Responsive) ===== */
+@media (max-width: 639px) {
+  header {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  nav a {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+}
+/* ===== YETENEK ETİKETLERİ (SKILL TAGS) ===== */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+}
+
+.skill-tags li {
+  color: var(--color-bg);
+  background-color: var(--color-primary);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full); /* Etiketlere tam yuvarlak (hap) görünümü verir */
+  font-size: var(--text-sm);
 }

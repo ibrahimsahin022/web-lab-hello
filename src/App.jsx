@@ -30,10 +30,13 @@ function App() {
             <figcaption>İbrahim Halil Şahin</figcaption>
           </figure>
           <p>Merhaba, ben web geliştirme öğrenen bir öğrenciyim.</p>
-          <ul>
+          <ul class="skill-tags">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
             <li>React</li>
             <li>TypeScript</li>
-            <li>HTML5 & CSS3</li>
+            <li>Git</li>
           </ul>
         </section>
 
