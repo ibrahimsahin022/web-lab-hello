@@ -1,79 +1,107 @@
-import './App.css';
+import { useState } from 'react'
+import './App.css'
 
 function App() {
+  const [count, setCount] = useState(0) // Şimdilik kullanılmıyor ama ileride lazım olabilir
+
   return (
-    <div>
-      {/* Klavye kullanıcıları için navigasyonu atlama linki */}
+    <>
       <a href="#main-content" className="skip-link">
         Ana icerige atla
       </a>
-
+      
       <header>
+        <h1 className="site-title">İbrahim Halil Şahin</h1> {/* site-title class'ını ekledik */}
         <nav aria-label="Ana navigasyon">
           <ul>
-            <li><a href="#hakkimda">Hakkimda</a></li>
+            <li><a href="#hakkimda">Hakkımda</a></li>
             <li><a href="#projeler">Projeler</a></li>
-            <li><a href="#iletisim">Iletisim</a></li>
+            <li><a href="#iletisim">İletişim</a></li>
           </ul>
         </nav>
       </header>
 
-      {/* Sayfanın birincil içeriği */}
       <main id="main-content">
         
-        {/* Hakkımda Bölümü */}
+        {/* ===== HAKKIMDA BÖLÜMÜ ===== */}
         <section id="hakkimda">
-          <h2>Hakkimda</h2>
+          <h2>Hakkımda</h2>
+          
           <figure>
-            {/* Profil resmi için anlamlı alt metin */}
             <img src="https://picsum.photos/150" alt="İbrahim Halil Şahin profil fotoğrafı" />
             <figcaption>İbrahim Halil Şahin</figcaption>
           </figure>
-          <p>Merhaba, ben web geliştirme öğrenen bir öğrenciyim.</p>
-          <ul class="skill-tags">
+          
+          <p>Web geliştirme alanında kendini geliştiren bir öğrenciyim. Modern web teknolojilerinin yanı sıra yazılım algoritmaları ve veri yapıları ile de yakından ilgileniyorum.</p>
+          
+          <h3>Kullandığım Teknolojiler</h3>
+          <ul className="skill-tags">
             <li>HTML5</li>
             <li>CSS3</li>
-            <li>JavaScript</li>
             <li>React</li>
             <li>TypeScript</li>
+            <li>JavaScript</li>
             <li>Git</li>
           </ul>
         </section>
 
-        {/* Projeler Bölümü */}
+        {/* ===== PROJELERİM BÖLÜMÜ ===== */}
         <section id="projeler">
           <h2>Projelerim</h2>
-          <article>
-            <h3>E-Ticaret Sitesi</h3>
-            <p>React ile yapılmış basit bir alışveriş sepeti uygulaması.</p>
-          </article>
-          <article>
-            <h3>Blog Uygulamasi</h3>
-            <p>Kullanıcıların yazı paylaşabildiği platform.</p>
-          </article>
+          
+          <div className="project-grid">
+            
+            {/* Proje 1 */}
+            <article className="project-card">
+              <img src="https://via.placeholder.com/400x200" alt="Bütçe Takip Sistemi Projesi" />
+              <h3>Yapay Zeka Destekli Bütçe Takip Sistemi</h3>
+              <p>Bitirme projesi olarak geliştirdiğim, hem web hem de mobil platformlarla tam uyumlu çalışan akıllı kişisel bütçe yönetim ve takip uygulaması.</p>
+              
+              <ul className="skill-tags">
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>Yapay Zeka</li>
+              </ul>
+            </article>
+
+            {/* Proje 2 */}
+            <article className="project-card">
+              <img src="https://via.placeholder.com/400x200" alt="Portföy Projesi" />
+              <h3>Kişisel Portföy Web Sitesi</h3>
+              <p>Erişilebilirlik (a11y) kurallarına uygun, modern ve duyarlı (responsive) kişisel web sitem.</p>
+              
+              <ul className="skill-tags">
+                <li>React</li>
+                <li>CSS3</li>
+                <li>Vite</li>
+              </ul>
+            </article>
+
+          </div>
         </section>
 
-        {/* İletişim Bölümü ve Doğrulamalı Form */}
+        {/* ===== İLETİŞİM BÖLÜMÜ ===== */}
         <section id="iletisim">
-          <h2>Iletisim</h2>
+          <h2>İletişim</h2>
+          
           <form action="#" method="POST" noValidate>
             <fieldset>
               <legend>Iletisim Formu</legend>
-              
+
               <div className="form-group">
-                <label htmlFor="name">Ad Soyad: </label>
-                <input type="text" id="name" name="name" required minLength={2} aria-describedby="name-error" />
+                <label htmlFor="name">Ad Soyad:</label>
+                <input type="text" id="name" name="name" required minLength="2" aria-describedby="name-error" />
                 <small id="name-error" className="error-msg" role="alert"></small>
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">E-posta: </label>
+                <label htmlFor="email">E-posta:</label>
                 <input type="email" id="email" name="email" required aria-describedby="email-error" />
                 <small id="email-error" className="error-msg" role="alert"></small>
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Konu: </label>
+                <label htmlFor="subject">Konu:</label>
                 <select id="subject" name="subject" required aria-describedby="subject-error">
                   <option value="">-- Seciniz --</option>
                   <option value="is">Is Teklifi</option>
@@ -85,22 +113,26 @@ function App() {
 
               <div className="form-group">
                 <label htmlFor="message">Mesajiniz:</label>
-                <textarea id="message" name="message" rows={5} required minLength={10} aria-describedby="message-error"></textarea>
+                <textarea id="message" name="message" rows="5" required minLength="10" aria-describedby="message-error"></textarea>
                 <small id="message-error" className="error-msg" role="alert"></small>
               </div>
 
               <button type="submit">Gonder</button>
+              
             </fieldset>
           </form>
         </section>
-
       </main>
 
       <footer>
-        <p>&copy; 2025 İbrahim Halil Şahin. Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 İbrahim Halil Şahin. Tüm hakları saklıdır.</p>
+        <p>
+          <a href="https://github.com/ibrahimsahin" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </p>
       </footer>
-    </div>
-  );
+    </>
+  )
 }
 
 export default App;
