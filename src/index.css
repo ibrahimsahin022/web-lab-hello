@@ -1,98 +1,43 @@
-/* --- 1. GENEL SIFIRLAMA VE YERLEŞİM --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  
+  --color-secondary-50: #f8fafc;
+  --color-secondary-500: #64748b;
+  --color-secondary-600: #475569;
+  
+  --color-success-50: #f0fdf4;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+
+  --color-danger-50: #fef2f2;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+
+  --color-info-50: #eff6ff;
+  --color-info-500: #3b82f6;
+  --color-info-600: #2563eb;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Merriweather", serif;
 }
 
-body {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: #333333; /* Yüksek kontrast için koyu gri metin */
-  background-color: #ffffff; /* Temiz beyaz arka plan */
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto; /* Sayfayı ortalar ve okumayı kolaylaştırır */
+@layer base {
+  body {
+    @apply bg-white text-slate-900 transition-colors duration-200 dark:bg-slate-900 dark:text-white font-sans;
+  }
 }
 
-/* --- 2. ERİŞİLEBİLİRLİK (A11Y) KURALLARI --- */
-
-/* Görünmez Skip Link (Sadece Tab tuşu ile gezinirken görünür) */
+/* Accessibility classes */
 .skip-link {
-  position: absolute;
-  top: -100px;
-  left: 0;
-  background: #2563EB;
-  color: white;
-  padding: 8px 16px;
-  z-index: 100;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
-/* Focus (Odak) Göstergesi - Klavye kullanıcıları için zorunludur, ASLA silinmez */
-:focus {
-  outline: 3px solid #2563EB;
-  outline-offset: 2px;
-}
-
-/* --- 3. TİPOGRAFİ VE BOŞLUKLAR --- */
-h1, h2, h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.8rem;
-  color: #111111;
-}
-
-p, ul, figure {
-  margin-bottom: 1rem;
-}
-
-ul {
-  padding-left: 20px;
-}
-
-/* --- 4. FORM STİLLERİ --- */
-.form-group {
-  margin-bottom: 1.2rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-}
-
-input, textarea, select {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #767676; /* Yeterli kontrast için koyu gri kenarlık */
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-button {
-  background-color: #2563EB;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-button:hover {
-  background-color: #1D4ED8;
-}
-
-.error-msg {
-  color: #B91C1C; /* Kırmızı uyarı rengi (Kontrastı yüksek) */
-  font-size: 0.85rem;
-  display: block;
-  margin-top: 0.3rem;
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded focus:outline-none focus:ring-4 focus:ring-primary-500 focus:ring-offset-2;
 }
