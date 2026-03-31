@@ -75,6 +75,8 @@ export default function ContactForm() {
                     <input
                         id="email"
                         type="email"
+                        required
+                        aria-required="true"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                         placeholder="john@example.com"
@@ -89,6 +91,9 @@ export default function ContactForm() {
                     <textarea
                         id="message"
                         rows={4}
+                        required
+                        aria-required="true"
+                        minLength={10}
                         value={message}
                         onChange={e => setMessage(e.target.value)}
                         placeholder="Merhaba, projeleriniz hakkında görüşmek istiyorum..."
