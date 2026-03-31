@@ -24,8 +24,17 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
                 {...props}
             >
                 {image && (
-                    <div className="w-full h-48 bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-                        <img src={image} alt={imageAlt || title} className="w-full h-full object-cover" />
+                    <div className="relative w-full h-48 bg-gradient-to-br from-slate-800 to-slate-900 dark:from-slate-800 dark:to-slate-950 flex items-center justify-center overflow-hidden group">
+                        <img
+                            src={image}
+                            alt={imageAlt || title}
+                            className="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-40"
+                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent mix-blend-multiply opacity-80" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span className="bg-blue-600/90 text-white text-sm font-semibold px-4 py-2 rounded-full backdrop-blur-sm shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">İncele</span>
+                        </div>
                     </div>
                 )}
                 {title && <div className="p-4 pb-0"><h3 className="font-bold text-lg leading-tight">{title}</h3></div>}
